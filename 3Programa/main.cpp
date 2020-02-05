@@ -59,19 +59,23 @@ int main()
 	Vertex v7 = Vertex(1.0,1.0,0.0);
 	Vertex v8 = Vertex(1.0,1.0,1.0);
 	
-	
+	//base:
 	Edge e1 = Edge(v1,v2);
-	Edge e2 = Edge(v2,v3);
-	Edge e3 = Edge(v3,v4);
-	Edge e4 = Edge(v4,v1);
-	Edge e5 = Edge(v4,v1);
-	Edge e6 = Edge(v4,v1);
-	Edge e7 = Edge(v4,v1);
-	Edge e8 = Edge(v4,v1);
-	Edge e9 = Edge(v4,v1);
-	Edge e10 = Edge(v4,v1);
-	Edge e11 = Edge(v4,v1);
-	Edge e12 = Edge(v4,v1);
+	Edge e2 = Edge(v2,v6);
+	Edge e3 = Edge(v6,v5);
+	Edge e4 = Edge(v5,v1);
+
+	//techo:
+	Edge e5 = Edge(v3,v4);
+	Edge e6 = Edge(v4,v8);
+	Edge e7 = Edge(v8,v7);
+	Edge e8 = Edge(v7,v3);
+
+	//columnas:
+	Edge e9  = Edge(v8,v6);	
+	Edge e10 = Edge(v7,v5);
+	Edge e11 = Edge(v3,v1);
+	Edge e12 = Edge(v4,v2);
 
 	
 
@@ -85,12 +89,61 @@ int main()
 	cout << flist[i] << endl;
 	*/
 	
-	vector <Edge> edge_list;
-	edge_list.push_back(e1);
-	edge_list.push_back(e2);
-	edge_list.push_back(e3);
-	edge_list.push_back(e4);
+	//base:
+	vector <Edge> base;
+	base.push_back(e1);
+	base.push_back(e2);
+	base.push_back(e3);
+	base.push_back(e4);
+
+	Face fB = Face(base);
+
+
+	//techo:
+	vector <Edge> techo;
+	techo.push_back(e5);
+	techo.push_back(e6);
+	techo.push_back(e7);
+	techo.push_back(e8);
+
+	Face fT = Face(techo);
+
+	//cara1:
+	vector <Edge> cara1;
+	cara1.push_back(e2);
+	cara1.push_back(e9);
+	cara1.push_back(e6);
+	cara1.push_back(e12);
+
+	Face f1 = Face(cara1);
+
+	//cara2:
+	vector <Edge> cara2;
+	cara2.push_back(e9);
+	cara2.push_back(e3);
+	cara2.push_back(e10);
+	cara2.push_back(e7);
+
+	Face f2 = Face(cara2);
+
+	//cara3:
+	vector <Edge> cara3;
+	cara3.push_back(e4);
+	cara3.push_back(e10);
+	cara3.push_back(e8);
+	cara3.push_back(e11);
+
+	Face f3 = Face(cara3);
 	
-	Face f1 = Face(edge_list);
+	//cara4:
+
+	vector <Edge> cara4;
+	cara4.push_back(e1);
+	cara4.push_back(e11);
+	cara4.push_back(e5);
+	cara4.push_back(e12);
+
+	Face f4 = Face(cara4);
+	
 
 }
