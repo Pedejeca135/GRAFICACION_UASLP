@@ -1,85 +1,9 @@
+#include <obj.hpp> 
 #include <iostream>
 #include <vector>
 
 
 using namespace std;
-
-
-class Vertex
-{
-	private :
-		float x,y,z;
-	public  :
-		Vertex(float x1, float y1, float z1)
-		{
-			x = x1;
-			y = y1;
-			z = z1;
-		}
-		Vertex()
-		{
-		}
-
-};
-
-class Edge
-{
-	private:
-		Vertex vi,vf;
-	public:
-		Edge(Vertex v1, Vertex v2)
-		{
-			vi = v1;
-			vf = v2;
-		}
-};
-
-class Face
-{
-	private:
-		vector <Edge> aristas;
-	public:
-		Face(vector<Edge> fars)
-		{
-			aristas = fars;
-		}
-		Face()
-		{			
-		}
-
-};
-
-class Figure
-{
-	private:
-	vector<Face> caras;
-	public:
-		Figure(vector<Face> faces)
-		{
-			caras = faces;
-		}
-		void toString();
-
-};
-
-void Figure :: toString()
-{
-	for(int i = 0; i < caras.size(); i++)
-		{
-			cout<<"cara numero"<< i << ":"<<endl;
-
-			for(int j = 0; j < caras[i]; j++ )
-			{
-				cout<<"arista numero"<< j << ":"<<endl;
-
-				for(int k = 0; k < caras[i][j];k++)
-				{
-					caras[i][j][k];
-				}
-			}
-		}
-}
-
 
 int main()
 {
@@ -178,6 +102,16 @@ int main()
 
 	Face f4 = Face(cara4);
 
+	vector <Face> paraCubo;	
+	paraCubo.push_back(fB);
+	paraCubo.push_back(fT);
+	paraCubo.push_back(f1);
+	paraCubo.push_back(f2);
+	paraCubo.push_back(f3);
+	paraCubo.push_back(f4);
+
+	Figure cubo1 = Figure(paraCubo);
+
 	/********************************************************************************************************************************************
 	*
 	*||||||||||||||||||||||||||||||||||||||||||||||||||||    PIRAMIDE    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -205,44 +139,55 @@ int main()
 
 	//base:
 	vector <Edge> baseP;
-	base.push_back(ep1);
-	base.push_back(ep2);
-	base.push_back(ep3);
-	base.push_back(ep4);
+	baseP.push_back(ep1);
+	baseP.push_back(ep2);
+	baseP.push_back(ep3);
+	baseP.push_back(ep4);
 
 	Face fpB = Face(baseP);
 
 
 	//cara1:
 	vector <Edge> caraP1;
-	techo.push_back(ep3);
-	techo.push_back(ep7);
-	techo.push_back(ep8);
+	caraP1.push_back(ep3);
+	caraP1.push_back(ep7);
+	caraP1.push_back(ep8);
 
 	Face fp1 = Face(caraP1);
 
 	//cara2:
 	vector <Edge> caraP2;
-	techo.push_back(ep7);
-	techo.push_back(ep2);
-	techo.push_back(ep6);
+	caraP2.push_back(ep7);
+	caraP2.push_back(ep2);
+	caraP2.push_back(ep6);
 
 	Face fp2 = Face(caraP2);
 
 	//cara3:
 	vector <Edge> caraP3;
-	techo.push_back(ep6);
-	techo.push_back(ep1);
-	techo.push_back(ep5);
+	caraP3.push_back(ep6);
+	caraP3.push_back(ep1);
+	caraP3.push_back(ep5);
 
 	Face fp3 = Face(caraP3);
 
 	//cara4:
 	vector <Edge> caraP4;
-	techo.push_back(ep5);
-	techo.push_back(ep4);
-	techo.push_back(ep8);
+	caraP4.push_back(ep5);
+	caraP4.push_back(ep4);
+	caraP4.push_back(ep8);
 
 	Face fp4 = Face(caraP4);
 
+	vector <Face> paraPiramide;	
+	paraCubo.push_back(fpB);
+	paraCubo.push_back(fp1);
+	paraCubo.push_back(fp2);
+	paraCubo.push_back(fp3);
+	paraCubo.push_back(fp4);
+
+	Figure piramide1 = Figure(paraPiramide);
+
+	cubo1.toString();
+	piramide1.toString();
 }
