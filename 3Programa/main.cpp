@@ -43,9 +43,42 @@ class Face
 		{
 			aristas = fars;
 		}
+		Face()
+		{			
+		}
 
 };
 
+class Figure
+{
+	private:
+	vector<Face> caras;
+	public:
+		Figure(vector<Face> faces)
+		{
+			caras = faces;
+		}
+		void toString();
+
+};
+
+void Figure :: toString()
+{
+	for(int i = 0; i < caras.size(); i++)
+		{
+			cout<<"cara numero"<< i << ":"<<endl;
+
+			for(int j = 0; j < caras[i]; j++ )
+			{
+				cout<<"arista numero"<< j << ":"<<endl;
+
+				for(int k = 0; k < caras[i][j];k++)
+				{
+					caras[i][j][k];
+				}
+			}
+		}
+}
 
 
 int main()
@@ -144,6 +177,72 @@ int main()
 	cara4.push_back(e12);
 
 	Face f4 = Face(cara4);
+
+	/********************************************************************************************************************************************
+	*
+	*||||||||||||||||||||||||||||||||||||||||||||||||||||    PIRAMIDE    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+	*
+	**********************************************************************************************************************************************/	
+
+
+	Vertex vp1 = Vertex(0.0,0.0,0.0);
+	Vertex vp2 = Vertex(1.0,0.0,0.0);
+	Vertex vp3 = Vertex(1.0,0.0,1.0);
+	Vertex vp4 = Vertex(0.0,0.0,1.0);
+	Vertex vp5 = Vertex(0.5,1.0,0.5);
 	
+	//base:
+	Edge ep1 = Edge(v1,v2);
+	Edge ep2 = Edge(v2,v3);
+	Edge ep3 = Edge(v3,v4);
+	Edge ep4 = Edge(v4,v1);
+	
+	//others
+	Edge ep5 = Edge(v1,v5);
+	Edge ep6 = Edge(v2,v5);
+	Edge ep7 = Edge(v3,v5);
+	Edge ep8 = Edge(v4,v5);
+
+	//base:
+	vector <Edge> baseP;
+	base.push_back(ep1);
+	base.push_back(ep2);
+	base.push_back(ep3);
+	base.push_back(ep4);
+
+	Face fpB = Face(baseP);
+
+
+	//cara1:
+	vector <Edge> caraP1;
+	techo.push_back(ep3);
+	techo.push_back(ep7);
+	techo.push_back(ep8);
+
+	Face fp1 = Face(caraP1);
+
+	//cara2:
+	vector <Edge> caraP2;
+	techo.push_back(ep7);
+	techo.push_back(ep2);
+	techo.push_back(ep6);
+
+	Face fp2 = Face(caraP2);
+
+	//cara3:
+	vector <Edge> caraP3;
+	techo.push_back(ep6);
+	techo.push_back(ep1);
+	techo.push_back(ep5);
+
+	Face fp3 = Face(caraP3);
+
+	//cara4:
+	vector <Edge> caraP4;
+	techo.push_back(ep5);
+	techo.push_back(ep4);
+	techo.push_back(ep8);
+
+	Face fp4 = Face(caraP4);
 
 }
