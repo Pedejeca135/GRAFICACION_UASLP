@@ -110,7 +110,7 @@ int main()
 	paraCubo.push_back(f3);
 	paraCubo.push_back(f4);
 
-	Figure cubo1 = Figure(paraCubo);
+	Figure cubo1 = Figure(paraCubo,"CUBO");
 
 	/********************************************************************************************************************************************
 	*
@@ -126,16 +126,16 @@ int main()
 	Vertex vp5 = Vertex(0.5,1.0,0.5);
 	
 	//base:
-	Edge ep1 = Edge(v1,v2);
-	Edge ep2 = Edge(v2,v3);
-	Edge ep3 = Edge(v3,v4);
-	Edge ep4 = Edge(v4,v1);
+	Edge ep1 = Edge(vp1,vp2);
+	Edge ep2 = Edge(vp2,vp3);
+	Edge ep3 = Edge(vp3,vp4);
+	Edge ep4 = Edge(vp4,vp1);
 	
 	//others
-	Edge ep5 = Edge(v1,v5);
-	Edge ep6 = Edge(v2,v5);
-	Edge ep7 = Edge(v3,v5);
-	Edge ep8 = Edge(v4,v5);
+	Edge ep5 = Edge(vp1,vp5);
+	Edge ep6 = Edge(vp2,vp5);
+	Edge ep7 = Edge(vp3,vp5);
+	Edge ep8 = Edge(vp4,vp5);
 
 	//base:
 	vector <Edge> baseP;
@@ -186,8 +186,9 @@ int main()
 	paraCubo.push_back(fp3);
 	paraCubo.push_back(fp4);
 
-	Figure piramide1 = Figure(paraPiramide);
+	Figure piramide1 = Figure(paraPiramide,"PIRAMIDE");
 
 	cubo1.toString();
+	cout<< "y ahora"<< endl;
 	piramide1.toString();
 }

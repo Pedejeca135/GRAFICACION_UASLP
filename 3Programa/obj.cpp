@@ -28,44 +28,68 @@ Face :: Face()
 {			
 }
 
-Figure :: Figure(vector<Face> faces)
+Figure :: Figure(vector<Face> faces, char *figuraNombre)
 {
 	caras = faces;
+    nombre = figuraNombre;
 }
 
-void Figure :: toString()
+string Figure :: toString()
 {
+    string resString;
+    //cout<< "Figura:" << nombre << endl;
+    resString = "Figura:";
+    resString += nombre;
+    resString += "\n";
+
 	for(int i = 0; i < caras.size(); i++)
 		{
-			cout<<"cara numero "<< i << ":"<<endl;
-
-			caras[i].toString();
+			//cout<<"cara numero "<< i << ":"<<endl;
+            resString = "cara numero ";
+            resString += i;
+            resString += ":\n";
+			//caras[i].toString();
+            resString += caras[i].toString();
 		}
+        return resString;
 }
 
-void Face :: toString()
+string Face :: toString()
 {
+    string resString;
 			for(int j = 0; j < aristas.size() ; j++ )
 			{
-				cout<<"arista numero"<< j << ":"<<endl;
+				//cout<<"arista numero"<< j << ":"<<endl;
+                resString = "arista numero";
+                resString += j;
+                resString += ":\n";
 
-                aristas[j].toString();                
+                //aristas[j].toString();                 
+                resString += aristas[j].toString();               
                 
-			}
-        		
+			}        
+            return resString;		
 }
 
-void Edge :: toString()
+string Edge :: toString()
 {
-			cout<<"vertice I"<< ":"<<endl;
-            vi.toString();
-            cout<<"vertice F"<< ":"<<endl;
-            vf.toString();        		
+    string resString;
+			//cout<<"vertice I"<< ":"<<endl;
+            //vi.toString();
+            resString = "vertice I:";
+            resString += vi.toString();
+            //cout<<"vertice F"<< ":"<<endl;
+            //vf.toString(); 
+            resString = "vertice F:";
+            resString += vf.toString();       		
 }
 
-void Vertex :: toString()
+string Vertex :: toString()
 {
-        	cout<<"X"<< ":"<< x <<endl;
+    string resString= "";
+        	/*cout<<"X"<< ":"<< x <<endl;
             cout<<"Y"<< ":"<< y <<endl;
             cout<<"Z"<< ":"<< z <<endl;	
+            */
+           resString = "(" + x +"," + y +"," + z +")";
 }

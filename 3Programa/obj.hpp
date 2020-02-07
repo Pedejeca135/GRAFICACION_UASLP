@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ class Vertex
 	public  :
 		Vertex(float x1, float y1, float z1);
 		Vertex();
-        void toString();
+        string toString();
 };
 
 class Edge
@@ -19,7 +20,7 @@ class Edge
 		Vertex vi,vf;
 	public:
 		Edge(Vertex v1, Vertex v2);
-        void toString();
+        string toString();
 };
 
 class Face
@@ -29,14 +30,15 @@ class Face
 	public:
 		Face(vector<Edge> fars);
 		Face();
-        void toString();
+        string toString();
 };
 
 class Figure
 {
 	private:
 	vector<Face> caras;
+    char *nombre;
 	public:
-		Figure(vector<Face> faces);
-		void toString();
+		Figure(vector<Face> faces, char *figuraNombre);
+		string toString();
 };
