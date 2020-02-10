@@ -11,7 +11,7 @@ class Lector
 
 	public  :
 		Lector();
-		string leeArchivo(string path);
+		Figure leeArchivo(string path);
 
 };
 
