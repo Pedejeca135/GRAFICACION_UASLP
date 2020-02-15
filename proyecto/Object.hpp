@@ -7,6 +7,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <sstream>
 
 class Vertex {
 	public:
@@ -17,24 +18,41 @@ class Vertex {
         Vertex();
 		Vertex(float _x, float _y, float _z);		
 		Vertex(Vertex *other);
-
-		String toString();
+		std :: string toString();
         void print();
+};
+
+class Edge
+{
+	private:
+		Vertex vi,vf;
+		int viI,viF;
+		bool activatedVertex;
+	public:
+		Edge();
+		Edge(int _viI, int _viF);
+		Edge(bool activate);
+		Edge(Vertex _vi, Vertex _vf);
+        std :: string toString();
 };
 
 class Face {
+
 	public:
 
         std :: vector<int> verticesIndex;// index of vertices of the face.
+		std :: vector<Edge> AristasVerticesIndexed;
 
         Face();
-        Face(Vector<int> _verticesIndex);
+        Face(std::vector<int> _verticesIndex);
         Face(Face *other);
 
 		void Add(int i);    //for adding a new index.
-		String toString();
+		void AddAristasVerticesIndexed(Edge e);
+		std::string toString();
         void print();
 };
+
 
 class Object {
 	public:
@@ -42,15 +60,17 @@ class Object {
 		std::vector<Vertex> vertices;	// List of vertices.
 		std::vector<Face> faces;		// List of faces.
 
+		Object();
 		Object(std::string _name);
 		Object(Object *other);
 
 		void AddVertex(Vertex v);
 		void AddFace(Face f);      
-		String toString();
+		std :: string toString();
         void print();
 };
 
 std::vector<Object> readObjFile(std::string path);
+std::vector<std::string> parseLine(std::string str, std::string delimeter, int start);
 
 //#endif
