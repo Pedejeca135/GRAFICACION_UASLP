@@ -34,6 +34,7 @@ class Edge
 		Edge(bool activate);
 		Edge(Vertex _vi, Vertex _vf);
         std :: string toString();
+		void print();
 };
 
 class Face {

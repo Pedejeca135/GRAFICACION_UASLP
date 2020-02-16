@@ -32,14 +32,12 @@ Vertex :: Vertex(Vertex *other){
 std :: string Vertex :: toString(){
     //std::string res;
     std :: ostringstream res;
-    std :: ostringstream yS;
-    std :: ostringstream zS;
 
 	res << "Vertex -> ";
 	res << "X: " ;
-    res << res.str() << x << " ";
+    res << x << " ";
 	res << "Y: " << y << " ";
-	res << res.str() << "Z: "<< z;
+	res << "Z: "<< z;
     return res.str();
 }
 
@@ -72,6 +70,22 @@ Edge ::Edge(Vertex _vi, Vertex _vf)
     activatedVertex = true;
 }
 
+string Edge :: toString(){
+
+    std :: ostringstream res;
+
+    res << "Edge: ";
+	res<<endl<<" indice vi :" << viI << endl << " indice vf :" << viF;
+    return res.str();
+}
+
+void Edge :: print(){
+      
+    cout << "Edgeeeee: ";
+	cout<<endl<<" indice vi :" << viI << endl << " indice vf :" << viF<<endl;
+    
+}
+
 /*****************************************************************
  * 
  * ||||||||||||||||||  Constructors of Face ||||||||||||||||||||
@@ -95,19 +109,29 @@ void Face::Add(int i){
 	verticesIndex.push_back(i);
 }
 void Face :: AddAristasVerticesIndexed(Edge e){
-    AristasVerticesIndexed.push_back(e); 
+    
+        //e.print();
+        e.print();
+        AristasVerticesIndexed.push_back(e); 
 }
 
 string Face :: toString(){
-    std::string res;
-    res = "Face: ";
+
+    std :: ostringstream res;
+
+    res << "Face: ";
 	for(int i = 0; i < verticesIndex.size(); i++)
-	res += verticesIndex[i] + ", ";
-    return res;
+	res<<verticesIndex[i]<<", ";
+    for(int i = 0 ; AristasVerticesIndexed.size();i++)
+    //AristasVerticesIndexed[i].print();
+    
+    return res.str();
 }
 
 void Face :: print(){
+      
     cout<<toString()<<endl;
+
 }
 
 /*****************************************************************
@@ -153,14 +177,15 @@ string Object::toString(){
 			res = res + faces[i].toString();
 }
 
-void Object::print(){
+void Object::print()
+{
     cout<<"Object: " << name << endl;
 
 	for(int i = 0; i < vertices.size(); i++)
 			vertices[i] .print();
 
-	for(int i = 0; i < faces.size(); i++)
-			faces[i].print();
+	//for(int i = 0; i < faces.size(); i++)
+			//faces[i].print();
 }
 
 /**************************************************************************************
@@ -182,16 +207,14 @@ std::vector<Object> readObjFile(std::string path){
     std :: ifstream file(path);
 
     const int vPos = 0;
-    const int vtPos =1;
-    const int vnPos = 2;
+    //const int vtPos =1;
+    //const int vnPos = 2;
 
     while(getline(file, lineOfFile))
     {
-        cout<<"lineOfFile : "<< lineOfFile<<endl;
     
             size_t limitPos = lineOfFile.find(space);
-            std :: string typeStringPrefix = lineOfFile.substr(0,limitPos);
-            cout<< typeStringPrefix<<endl;
+            std :: string typeStringPrefix = lineOfFile.substr(0,limitPos);           
 
             //is not an empty line.
             if(limitPos != std::string::npos) {
@@ -273,31 +296,37 @@ std::vector<Object> readObjFile(std::string path){
 
                                 f.Add(index_V);                                
                                  
-                                if(i >= elementsOfLine.size() - 1)
+                                if(i == elementsOfLine.size() -1)
                                 {
-                                   e = Edge(firstOfAll,index_V);     
+                                    initIndex = finIndex;
+                                    finIndex = index_V; 
+                                    e =  Edge(initIndex,finIndex);
+                                    f.AddAristasVerticesIndexed(e); 
+
+                                     e = Edge(finIndex,firstOfAll);
+                                    //e.print();//hasta aqui todo bien.
+                                    f.AddAristasVerticesIndexed(e);    
                                 }
                                 else
                                 {                                    
                                      if (i == 0)
                                     {
-                                        firstOfAll = index_V;
-                                    }   
+                                        finIndex = firstOfAll = index_V;    
+                                    } 
+                                    else
+                                    { 
+                                        
+                                            initIndex = finIndex;
+                                            finIndex = index_V;                                          
+                                            e =  Edge(initIndex,finIndex);
+                                            f.AddAristasVerticesIndexed(e); 
+                                            initialOneB = true;                                        
+                                    }
+                                      
 
                                         
-                                        if(initialOneB)
-                                    {
-                                        initIndex = index_V ;                                        
-                                        initialOneB = false;
-                                    }
-                                    else
-                                    {
-                                        finIndex = index_V;
-                                        Edge e = new Edge(initIndex,finIndex);
-                                        initialOneB = true;
-                                    }
-                                }
-                                f.AddAristasVerticesIndexed(e);     
+                                       
+                                }    
                             } 
                             objects[objects.size()-1].AddFace(f);
                     } 
@@ -315,7 +344,6 @@ std::vector<Object> readObjFile(std::string path){
 
 std::vector<std::string> parseLine(std::string str, std::string delimeter, int start) {
 
-    cout<<endl;
 	size_t positionFound = 0;				// position of the element to find
 	std::vector<std::string> res;	// vector that will be returned
 	std::string element;				// the current element of the string
@@ -324,11 +352,9 @@ std::vector<std::string> parseLine(std::string str, std::string delimeter, int s
 	while
     ((positionFound = str.find(delimeter, start)) != std::string::npos) 
     {
-         //cout<< "while parseLineFunction"<<endl;
 		// extracts the substring
 		element = str.substr(start, positionFound-start);
 
-        cout<<"Element: "<< element<< endl;
 		// Changes the start index
 		start = positionFound + delimeter.length();
 
@@ -338,10 +364,8 @@ std::vector<std::string> parseLine(std::string str, std::string delimeter, int s
     if(str.length() - positionFound > 0)//there is a last element.
     {
         element = str.substr(start, str.length());
-        cout<<"Element: "<< element<< endl;
     }
 
-    cout<< "delimeter:"<<delimeter<<"start:"<< start<<endl;
 
 	// If there were elements, adds the last one
 	if(res.size() > 0) {
