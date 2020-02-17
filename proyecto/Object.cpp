@@ -81,7 +81,7 @@ string Edge :: toString(){
 
 void Edge :: print(){
       
-    cout << "Edgeeeee: ";
+    cout << "Edge: ";
 	cout<<endl<<" indice vi :" << viI << endl << " indice vf :" << viF<<endl;
     
 }
@@ -108,10 +108,9 @@ Face::Face(Face *other){
 void Face::Add(int i){
 	verticesIndex.push_back(i);
 }
-void Face :: AddAristasVerticesIndexed(Edge e){
+void Face :: AddAristasVerticesIndexed( int initial, int final){
     
-        //e.print();
-        e.print();
+        Edge e = new Edge(initial,final);
         AristasVerticesIndexed.push_back(e); 
 }
 
@@ -123,7 +122,7 @@ string Face :: toString(){
 	for(int i = 0; i < verticesIndex.size(); i++)
 	res<<verticesIndex[i]<<", ";
     for(int i = 0 ; AristasVerticesIndexed.size();i++)
-    //AristasVerticesIndexed[i].print();
+    AristasVerticesIndexed[i].print();
     
     return res.str();
 }
@@ -132,6 +131,11 @@ void Face :: print(){
       
     cout<<toString()<<endl;
 
+}
+
+void Face :: edgeVectorDirect(vector<Edge> &llega)
+{
+    AristasVerticesIndexed = llega;
 }
 
 /*****************************************************************
@@ -184,8 +188,8 @@ void Object::print()
 	for(int i = 0; i < vertices.size(); i++)
 			vertices[i] .print();
 
-	//for(int i = 0; i < faces.size(); i++)
-			//faces[i].print();
+	for(int i = 0; i < faces.size(); i++)
+			faces[i].print();
 }
 
 /**************************************************************************************
@@ -221,7 +225,7 @@ std::vector<Object> readObjFile(std::string path){
                 
 
                 std::vector<std::string> elementsOfLine ;
-                elementsOfLine = parseLine(lineOfFile,space,0);
+                elementsOfLine = split(lineOfFile,space,0);
 			    elementsOfLine.erase(elementsOfLine.begin()); // remove the first element (prefix)
 
 
@@ -268,8 +272,9 @@ std::vector<Object> readObjFile(std::string path){
                   
                     if(objects.size() > 0) 
                     {  
-                        Face f; 
-                        Edge e;
+                        Face f;
+
+                        std::vector<Edge> vectorEdges = vector<Edge>();
                         int firstOfAll;
                         int initIndex;
                         int finIndex;
@@ -283,7 +288,7 @@ std::vector<Object> readObjFile(std::string path){
                                 if(elementsOfLine[i].find(slash) != std::string::npos)
                                 {
                                     std::vector<std::string> elementsOfString ; 
-                                    elementsOfString = parseLine(elementsOfLine[i],slash,0);
+                                    elementsOfString = split(elementsOfLine[i],slash,0);
                                     index_V = stoi(elementsOfString[vPos]);//(index = 0)->77/903/934 
                                                              
                                     //index_Vt = stoi(elementsOfString[vtPos]);
@@ -300,12 +305,14 @@ std::vector<Object> readObjFile(std::string path){
                                 {
                                     initIndex = finIndex;
                                     finIndex = index_V; 
-                                    e =  Edge(initIndex,finIndex);
-                                    f.AddAristasVerticesIndexed(e); 
 
-                                     e = Edge(finIndex,firstOfAll);
-                                    //e.print();//hasta aqui todo bien.
-                                    f.AddAristasVerticesIndexed(e);    
+                                    //
+                                    vectorEdges.push_back(Edge(initIndex,finIndex));
+                                    f.AddAristasVerticesIndexed(initIndex,finIndex);
+
+                                    //
+                                    vectorEdges.push_back(Edge(finIndex,firstOfAll));
+                                    f.AddAristasVerticesIndexed(finIndex,firstOfAll);    
                                 }
                                 else
                                 {                                    
@@ -317,9 +324,11 @@ std::vector<Object> readObjFile(std::string path){
                                     { 
                                         
                                             initIndex = finIndex;
-                                            finIndex = index_V;                                          
-                                            e =  Edge(initIndex,finIndex);
-                                            f.AddAristasVerticesIndexed(e); 
+                                            finIndex = index_V;  
+
+                                            //        
+                                            vectorEdges.push_back(Edge(initIndex,finIndex));       
+                                            f.AddAristasVerticesIndexed(initIndex,finIndex); 
                                             initialOneB = true;                                        
                                     }
                                       
@@ -329,7 +338,16 @@ std::vector<Object> readObjFile(std::string path){
                                 }    
                             } 
                             objects[objects.size()-1].AddFace(f);
+                           //f.print();
+                          /* for(int j = 0 ; j < vectorEdges.size();j++)
+                           {
+                               vectorEdges[j].print();
+                           }*/
+                           f.edgeVectorDirect(vectorEdges);
+                           f.print();
+                          
                     } 
+                     
                 }
 
 
@@ -342,7 +360,7 @@ std::vector<Object> readObjFile(std::string path){
 }//readObjFile function(END).
 
 
-std::vector<std::string> parseLine(std::string str, std::string delimeter, int start) {
+std::vector<std::string> split(std::string str, std::string delimeter, int start) {
 
 	size_t positionFound = 0;				// position of the element to find
 	std::vector<std::string> res;	// vector that will be returned

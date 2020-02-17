@@ -45,11 +45,13 @@ class Face {
 		std :: vector<Edge> AristasVerticesIndexed;
 
         Face();
+		
         Face(std::vector<int> _verticesIndex);
         Face(Face *other);
 
+		void edgeVectorDirect(std::vector<Edge> &llega);
 		void Add(int i);    //for adding a new index.
-		void AddAristasVerticesIndexed(Edge e);
+		void AddAristasVerticesIndexed(int initial, int final );
 		std::string toString();
         void print();
 };
@@ -72,6 +74,6 @@ class Object {
 };
 
 std::vector<Object> readObjFile(std::string path);
-std::vector<std::string> parseLine(std::string str, std::string delimeter, int start);
+std::vector<std::string> split (std::string str, std::string delimeter, int start);
 
 //#endif
