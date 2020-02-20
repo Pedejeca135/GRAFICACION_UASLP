@@ -42,7 +42,8 @@ class Face {
 	public:
 
         std :: vector<int> verticesIndex;// index of vertices of the face.
-		std :: vector<Edge> AristasVerticesIndexed;
+		std :: vector<Edge> AristasVerticesIndexed = std :: vector<Edge>();
+		//std::vector<Edge> vectorEdges = vector<Edge>() ;
 
         Face();
 		
