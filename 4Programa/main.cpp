@@ -58,6 +58,7 @@ int main( void )
         
 // dibujar en la segunda ventana. 
 		 glfwMakeContextCurrent(window2);
+        glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
          glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear( GL_COLOR_BUFFER_BIT );
 
@@ -87,7 +88,10 @@ int main( void )
 
         
         glfwSwapBuffers(window);
+        glfwSwapBuffers(window2);
+
         glfwPollEvents();
+
 
     } while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
            glfwWindowShouldClose(window) == 0 );
