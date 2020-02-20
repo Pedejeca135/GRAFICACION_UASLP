@@ -111,7 +111,7 @@ void Face::Add(int i){
 void Face :: AddAristasVerticesIndexed( int initial, int final){
     
         Edge e = new Edge(initial,final);
-        AristasVerticesIndexed.push_back(e); 
+        AristasVerticesIndexed.push_back(&e); 
 }
 
 string Face :: toString(){

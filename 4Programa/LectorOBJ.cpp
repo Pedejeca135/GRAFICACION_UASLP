@@ -6,6 +6,8 @@ Lector :: Lector()
    
 }
 
+/*
+
 Figure Lector:: leeArchivo(string path)
 {
     char desision;
@@ -55,7 +57,7 @@ Figure Lector:: leeArchivo(string path)
        
        
     }
-
+*/
      /*
      while(salida == false)
      {
@@ -95,5 +97,5 @@ Figure Lector:: leeArchivo(string path)
 
 
 
-     cout<<"lectura terminada"<<endl;
-}//metodo de lectura.
+     //cout<<"lectura terminada"<<endl;
+//}//metodo de lectura.
