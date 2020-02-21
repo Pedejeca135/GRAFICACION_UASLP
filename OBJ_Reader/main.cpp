@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	std::vector<Object> firstFile = readObjFile("../modelos/tareaUno.obj");
+	std::vector<Object> firstFile = readObjFile("../Models/tareaUno.obj");
 	//cout<<"despuesde leerlo"<<endl;
 	for(int i = 0 ; i<firstFile.size();i++)
 	{
