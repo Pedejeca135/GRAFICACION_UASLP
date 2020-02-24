@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset='utf-8'>
+<title>About docs.gl</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="jquery-cookie/jquery.cookie.js"></script>
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link id="pagestyle" href="style_light.css" rel="stylesheet" type="text/css" />
+
+<script>
+$(function() {
+	if ($.cookie("pagestyle") == 'light')
+		$("#pagestyle").attr("href", "style_light.css");
+
+	if ($.cookie("pagestyle") == 'dark')
+		$("#pagestyle").attr("href", "style_dark.css");
+});
+</script>
+
+	<style>
+		.logo-bg {
+			text-align: center;
+
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		.logo {
+			font-family: "Helvetica Neue", "Helvetica";
+			font-weight: 300;
+			font-size: 76px;
+			padding: 20px;
+			margin: 0;
+			margin-top: 20px;
+		}
+
+		.logo-desc {
+			font-family: "Helvetica Neue", "Helvetica";
+			font-weight: 200;
+		}
+
+		.center-container {
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			display: block;
+			width: 800px;
+		}
+	</style>
+</head>
+<body>
+
+	<div style="width: 950px; margin-left: auto; margin-right: auto; text-align: right">
+	</div>
+
+	<div class="logo-bg">
+		<div class="logo-container">
+			<h1 class="logo">docs.<span class="thicken">GL</span></h1>
+			<p class="logo-desc">OpenGL API Documentation</p>
+		</div>
+	</div>
+
+	<div class="center-container">
+		<p>docs.gl is an improvement of the official OpenGL documentation. It was written by <a href="http://twitter.com/VinoBS">Jorge Rodr&iacute;guez</a>. GLSL support was contributed by <a href="https://github.com/Sohail05">Sohail Ajmal</a>. Additional site design improvements were contributed by <a href="https://github.com/fkaa">Felix Kaaman</a>. Each reference page is under individual copyright listed in that entry, all other content is in the public domain. docs.gl is completely unaffiliated with OpenGL and Khronos.</p>
+		<p>Anyone can contribute to docs.gl to improve the OpenGL documentation. The source code to docs.gl is <a href="https://github.com/BSVino/docs.gl">available on GitHub</a>. Pull requests and suggestions are welcome.</p>
+		<p><a href="https://github.com/BSVino/docs.gl/graphs/contributors">Full list of contributors</a></p>
+		<p><a href="docs.gl.zip">Download docs.gl for offline use.</a></p>
+	</div>
+
+</body>
+</html>

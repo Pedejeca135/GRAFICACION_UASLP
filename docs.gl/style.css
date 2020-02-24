@@ -1,0 +1,421 @@
+/* First a CSS reset */
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Now comes the docs.gl markup */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Regular'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v13/2UX7WLTfW3W8TclTUvlFyQ.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(https://fonts.gstatic.com/s/sourcecodepro/v5/mrl8jkM18OlOQN8JLgasDxM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+}
+
+body {
+	font-family: Roboto;
+	font-size: 14px;
+	line-height: 150%;
+}
+
+pre {
+	margin: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: bold;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+h3 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+h5 {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+h6 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+p {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+dt {
+	float: left;
+	width: 100px;
+	clear: both;
+}
+
+dd {
+	float: left;
+	width: 540px;
+	margin-top: -20px;
+	margin-left: 30px;
+}
+
+dl {
+	width: 650px;
+	clear: both;
+	display: table;
+}
+
+li {
+	margin-left: 10px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.ui-selectmenu-open ul .ui-state-focus {
+	border: 0px;
+}
+
+.ui-autocomplete .ui-state-focus {
+	border: 0px;
+}
+
+.ui-autocomplete {
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
+.toggle-container {
+	position: absolute;
+	top: 0;
+	right: 5px;
+}
+
+.thicken {
+	font-weight: 500;
+}
+
+.function {
+	border-radius: 2px;
+}
+
+.header-bg {
+
+}
+
+.header-container {
+	width: 950px;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.header-inner {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.header-logo {
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+
+.search-div {
+	float: right;
+	margin: 18px;
+	margin-top: 8px;
+	display: inline-block;
+}
+
+#search {
+
+}
+
+#search_button {
+	padding: 0em 0.3em;
+	margin-left: 5px;
+	position: relative;
+	top: -1px;
+}
+
+#styles {
+	float: right;
+	color: black;
+}
+
+#styles a {
+	cursor: pointer;
+}
+
+#everything {
+	width: 950px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#toc {
+	width: 260px;
+	float: left;
+	margin: 20px;
+}
+
+#khronos {
+	width: 610px;
+	float: left;
+	margin: 20px;
+}
+
+.programlisting, code {
+	font-family: 'Source Code Pro';
+}
+
+.function {
+	font-weight: bold;
+}
+
+.current {
+	font-weight: bold;
+}
+
+#versions table {
+	width: 100%;
+}
+
+#versions_container {
+	margin-bottom: 30px;
+}
+
+#versions_dropdown-button > span.ui-selectmenu-text {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#hide_label {
+	font-size: 11px;
+}
+
+#hide_deprecated {
+}
+
+#command_versions {
+	float: right;
+}
+
+#command_categories, #command_categories a {
+	text-decoration: none;
+}
+
+.disabled, .disabled a {
+	text-decoration: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.center {
+	text-align: center;
+}
+
+#command_title {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.function {
+	padding-left: .2em;
+	padding-right: .2em;
+}
+
+.refnamediv h2 {
+	display: none;
+}
+
+.informaltable table,
+.informaltable th,
+.informaltable td {
+	border: 1px solid;
+}
+
+.itemizedlist ul {
+	list-style-type: disc;
+	padding-left: 1em;
+}
+
+.example .programlisting {
+	overflow-x: scroll;
+	padding: 10px;
+	font-size: 12px;
+}
+
+.ckeyword {
+	font-weight: bold;
+}
+
+.codecomment, .codecomment .ckeyword, .codecomment .codestring, .codecomment .constant {
+	font-style: italic;
+}
+
+#improvepage {
+	width: 100%;
+	text-align: center;
+	clear: both;
+}
+
+#Copyright h2 {
+	display: none;
+}
+
+#Copyright {
+	font-size: 11px;
+	padding: 10px;
+}
+
+#Copyright p {
+	margin: 0px;
+	padding: 0px;
+}
+
+#footer {
+	margin-top: 50px;
+	padding-bottom: 10px;
+	width: 100%;
+	font-size: 10px;
+	text-align: center;
+}
+
+#front_page {
+	width: 950px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	text-align: center;
+}
+
+#frontsearch, #search {
+	font-size: 14px;
+	border-radius: 4px;
+	outline: none;
+	padding: 4px;
+	width: 275px;
+	font-family: Roboto, Helvetica;
+	margin-left: 10px;
+	float:left;
+}
+
+#search {
+	margin:0;
+	position: absolute;
+	bottom:0;
+	right: 30px;
+}
+
+#search_button {
+	margin: 0;
+	margin-top: 13px;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	height: 30px;
+}
+
+#frontsearch_button {
+	font-size: 22px;
+	padding: 0em 0.3em;
+	margin-left: 5px;
+	position: relative;
+	top: -5px;
+}
+
+#outer_disqus_thread {
+	padding: 10px;
+	margin-top: 10px;
+}
