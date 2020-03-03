@@ -1,0 +1,13 @@
+1)
+El primero no cumple por lo menos porque el vertice 11 no pertenece a ninguna arista.
+
+2)//arista a un pol por lo menos 
+
+3)
+La tercera cumple porque las caras son tringuladas, por lo tanto cada poligono es de 3 caras, necesita 3 vertices y eso se cumple para cada caso.
+
+4)
+
+
+5)
+
