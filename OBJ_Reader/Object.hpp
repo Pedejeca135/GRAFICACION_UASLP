@@ -33,14 +33,15 @@ class Edge
 		Edge(int _viI, int _viF);
 		Edge(bool activate);
 		Edge(Vertex _vi, Vertex _vf);
+		Edge(Vertex _vi, Vertex _vf,int _viI, int _viF);
         std :: string toString();
 		void print();
+		float longitud();
 };
 
 class Face {
 
 	public:
-
         std :: vector<int> verticesIndex;// index of vertices of the face.
 		std :: vector<Edge> AristasVerticesIndexed = std :: vector<Edge>();
 		//std::vector<Edge> vectorEdges = vector<Edge>() ;

@@ -33,7 +33,7 @@ std :: string Vertex :: toString(){
     //std::string res;
     std :: ostringstream res;
 
-	res << "Vertex -> ";
+	//res << "Vertex -> ";
 	res << "X: " ;
     res << x << " ";
 	res << "Y: " << y << " ";
@@ -81,10 +81,22 @@ string Edge :: toString(){
 }
 */
 
+
+float Edge :: longitud()
+{
+    float res = 0;
+    float X = vf.x  - vi.x;
+    float Y = vf.y  - vi.y;
+    float Z = vf.z  - vi.z;
+
+    d= pow( pow(X,2) + pow(Y,2) + pow(Z,2),0.5);
+    return d;
+    return res;
+}
 void Edge :: print(){
       
-    cout << "Edge: ";
-	cout<<endl<<" indice vi :" << viI << endl << " indice vf :" << viF<<endl;
+    cout << " Edge: ";
+	cout<<endl<<"  indice vi :" << viI << endl << "  indice vf :" << viF<<endl;
     
 }
 
@@ -141,7 +153,7 @@ string Face :: toString(){
 
 void Face :: print(){
   
-    cout << "Face: ";
+    cout<<endl << "Face: ";
    for(int i = 0; i < verticesIndex.size(); i++)
 	cout<<verticesIndex[i]<<", ";
 
@@ -198,13 +210,39 @@ string Object::toString(){
 }
 */
 
+
+float Object :: edgeDistancia(Edge edge)
+{
+    float d = 0;
+    float X = vertices[edge.viF].x - vertices[edge.viI].x;
+    float Y = vertices[edge.viF].y - vertices[edge.viI].y;
+    float Z = vertices[edge.viF].z - vertices[edge.viI].z;
+
+    d= pow( pow(X,2) + pow(Y,2) + pow(Z,2),0.5);
+    return d;
+}
+
+float Object :: facePerimetro(Face face)
+{
+    float peri = 0;
+    for(int i = 0 ; i< face.AristasVerticesIndexed ; i++)
+    {
+        peri += edgeDistancia[AristasVerticesIndexe[i]];
+    }
+
+    return peri;
+}
+
+
 void Object::print()
 {
     cout<<"Object: " << name << endl;
 
 	for(int i = 0; i < vertices.size(); i++)
+    {
+            cout<< "Vertex " << "(" << i+1 <<")" <<"-> ";
 			vertices[i] .print();
-
+    }
 	for(int i = 0; i < faces.size(); i++)
 			faces[i].print();
 }
