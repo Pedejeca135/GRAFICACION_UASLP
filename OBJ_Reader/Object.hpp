@@ -24,7 +24,7 @@ class Vertex {
 
 class Edge
 {
-	private:
+	public:
 		Vertex vi,vf;
 		int viI,viF;
 		bool activatedVertex;
@@ -33,15 +33,14 @@ class Edge
 		Edge(int _viI, int _viF);
 		Edge(bool activate);
 		Edge(Vertex _vi, Vertex _vf);
-		Edge(Vertex _vi, Vertex _vf,int _viI, int _viF);
         std :: string toString();
 		void print();
-		float longitud();
 };
 
 class Face {
 
 	public:
+
         std :: vector<int> verticesIndex;// index of vertices of the face.
 		std :: vector<Edge> AristasVerticesIndexed = std :: vector<Edge>();
 		//std::vector<Edge> vectorEdges = vector<Edge>() ;
@@ -73,6 +72,11 @@ class Object {
 		void AddFace(Face f);      
 		std :: string toString();
         void print();
+
+		bool Validacion();
+		float Object :: edgeDistancia(Edge edge);
+		float Object :: facePerimetro(Face face);
+		
 };
 
 std::vector<Object> readObjFile(std::string path);
