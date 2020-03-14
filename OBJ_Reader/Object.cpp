@@ -1,4 +1,5 @@
 #include <Object.hpp>
+#include <math.h>
 
 using namespace std;
 
@@ -178,7 +179,7 @@ Object :: Object(std::string _name){
 }
 
 Object :: Object(Object *other){
-	name = other->name;
+	name = other->name;    
 	for(int i = 0; i < other->vertices.size(); i++)
 		vertices.push_back(other->vertices[i]);
 	for(int i = 0; i < other->faces.size(); i++)
@@ -225,11 +226,10 @@ float Object :: edgeDistancia(Edge edge)
 float Object :: facePerimetro(Face face)
 {
     float peri = 0;
-    for(int i = 0 ; i< face.AristasVerticesIndexed ; i++)
+    for(int i = 0 ; i < face.AristasVerticesIndexed.size; i++)
     {
-        peri += edgeDistancia[AristasVerticesIndexe[i]];
+        peri += edgeDistancia(face.AristasVerticesIndexed[i]);
     }
-
     return peri;
 }
 
@@ -250,7 +250,7 @@ void Object::print()
 /**************************************************************************************
  * 
  * Function to read .obj files.
- * This need the pat of the file to return an object of the Object calss.
+ * This need the path of the file to return an object of the Object calss.
  * 
  * ************************************************************************************/
 std::vector<Object> readObjFile(std::string path){
@@ -388,7 +388,7 @@ std::vector<Object> readObjFile(std::string path){
         return objects;
 }//readObjFile function(END).
 
-
+//function to split a string. Return a vector of strings.
 std::vector<std::string> split(std::string str, std::string delimeter, int start) {
 
 	size_t positionFound = 0;				// position of the element to find
