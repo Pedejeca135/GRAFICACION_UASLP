@@ -1,61 +1,10 @@
-//#ifndef OBJECT_H
-//#define OBJECT_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
+#include <Face.hpp>
+
 #include <fstream>
-#include <vector>
-#include <string>
 #include <sstream>
-
-class Vertex {
-	public:
-		float x;
-		float y;
-		float z;
-
-        Vertex();
-		Vertex(float _x, float _y, float _z);		
-		Vertex(Vertex *other);
-		std :: string toString();
-        void print();
-};
-
-class Edge
-{
-	public:
-		Vertex vi,vf;
-		int viI,viF;
-		bool activatedVertex;
-	public:
-		Edge();
-		Edge(int _viI, int _viF);
-		Edge(bool activate);
-		Edge(Vertex _vi, Vertex _vf);
-        std :: string toString();
-		void print();
-};
-
-class Face {
-
-	public:
-
-        std :: vector<int> verticesIndex;// index of vertices of the face.
-		std :: vector<Edge> AristasVerticesIndexed = std :: vector<Edge>();
-		//std::vector<Edge> vectorEdges = vector<Edge>() ;
-
-        Face();
-		
-        Face(std::vector<int> _verticesIndex);
-        Face(Face *other);
-
-		void edgeVectorDirect(std::vector<Edge> &llega);
-		void Add(int i);    //for adding a new index.
-		void AddAristasVerticesIndexed(int initial, int final );
-		std::string toString();
-        void print();
-};
 
 
 class Object {
@@ -74,12 +23,12 @@ class Object {
         void print();
 
 		bool Validacion();
-		float Object :: edgeDistancia(Edge edge);
-		float Object :: facePerimetro(Face face);
+		float edgeDistancia(Edge edge);
+		float facePerimetro(Face face);
 		
 };
 
 std::vector<Object> readObjFile(std::string path);
 std::vector<std::string> split (std::string str, std::string delimeter, int start);
 
-//#endif
+#endif
