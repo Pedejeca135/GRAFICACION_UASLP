@@ -26,7 +26,9 @@ int main(void)
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear( GL_COLOR_BUFFER_BIT );
 
-		plotWireFrame(firstFile);
+		draw(firstFile,0.2,Color3f(0.3,0.2,0.9));
+		plotWireFrame(firstFile,0.2,Color3f(0.8,0.5,0.7));
+		
         
         glfwSwapBuffers(window);
 

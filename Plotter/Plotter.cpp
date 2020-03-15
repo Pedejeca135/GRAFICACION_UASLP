@@ -198,16 +198,6 @@ void draw(vector<Object> objs, Color3f color){
         draw(objs[i], color);
     }
 }
-
-void draw(vector<Object> objs, float scale, Color3f color){
-    
-    for(int i= 0 ; i< objs.size(); i++)
-    {
-        draw(objs[i],scale, color);
-    }
-}
-
-
 void draw(Object obj, float scale, Color3f color){
 
 	for(int f = 0; f < obj.faces.size(); f++) 
@@ -223,6 +213,17 @@ void draw(Object obj, float scale, Color3f color){
         
 	}
 }
+
+
+void draw(vector<Object> objs, float scale, Color3f color){
+    
+    for(int i= 0 ; i< objs.size(); i++)
+    {
+        draw(objs[i],scale, color);
+    }
+}
+
+
 
 
 
