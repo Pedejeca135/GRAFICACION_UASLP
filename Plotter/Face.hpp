@@ -1,7 +1,7 @@
 #ifndef FACE_H
 #define FACE_H
 
-#include <../OBJ_Reader/Edge.hpp>
+#include <Edge.hpp>
 
 
 class Face {

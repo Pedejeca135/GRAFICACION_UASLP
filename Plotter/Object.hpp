@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include <../OBJ_Reader/Face.hpp>
+#include <Face.hpp>
 
 #include <fstream>
 

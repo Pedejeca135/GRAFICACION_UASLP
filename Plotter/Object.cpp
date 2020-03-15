@@ -1,4 +1,4 @@
-#include <../OBJ_Reader/Object.hpp>
+#include <Object.hpp>
 
 
 using namespace std;

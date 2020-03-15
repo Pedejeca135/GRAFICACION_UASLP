@@ -1,5 +1,5 @@
 
-#include <../OBJ_Reader/Vertex.hpp>
+#include <Vertex.hpp>
 
 /*****************************************************************
  * 
