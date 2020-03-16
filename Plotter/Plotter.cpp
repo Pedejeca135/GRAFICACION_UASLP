@@ -209,8 +209,7 @@ void draw(Object obj, float scale, Color3f color){
 			    Vertex vertex = obj.vertices[face.verticesIndex[v]];
 			    glVertex3f(vertex.x*scale, vertex.y*scale, vertex.z*scale);
 		    }
-		    glEnd();
-        
+		    glEnd();        
 	}
 }
 

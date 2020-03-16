@@ -1,4 +1,4 @@
-#include <Object.hpp> 
+//#include <Object.hpp> 
 #include <Plotter.hpp>
 #include <GLFW/glfw3.h>
 
@@ -8,7 +8,8 @@ using namespace std;
 int main(void)
 {
 	GLFWwindow* window;
-	std::vector<Object> firstFile = readObjFile("../Models/tareaUno.obj");
+	std::vector<Object> firstFile = readObjFile("../Models/chinese_coin.obj");
+    float escalacion= 0.01;
 	
 
 	 if( !glfwInit() )
@@ -26,8 +27,8 @@ int main(void)
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear( GL_COLOR_BUFFER_BIT );
 
-		draw(firstFile,0.2,Color3f(0.3,0.2,0.9));
-		plotWireFrame(firstFile,0.2,Color3f(0.8,0.5,0.7));
+		draw(firstFile,escalacion,Color3f(0.3,0.2,0.9));
+		plotWireFrame(firstFile,escalacion,Color3f(0.8,0.5,0.7));
 		
         
         glfwSwapBuffers(window);
