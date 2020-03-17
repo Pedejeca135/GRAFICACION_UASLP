@@ -8,8 +8,8 @@ using namespace std;
 int main(void)
 {
 	GLFWwindow* window;
-	std::vector<Object> firstFile = readObjFile("../Models/chinese_coin.obj");
-    float escalacion= 0.01;
+	std::vector<Object> firstFile = readObjFile("../Models/cone_cyl.obj");
+    float escalacion= 0.11;
 	
 
 	 if( !glfwInit() )
