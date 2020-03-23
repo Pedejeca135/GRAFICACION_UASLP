@@ -1,7 +1,7 @@
 #ifndef PLOTTER_H
 #define PLOTTER_H
 
-#include <Object.hpp>
+#include <OBJ_Reader/Object.hpp>
 #include <GLFW/glfw3.h>
 
 class Color3f
@@ -40,17 +40,5 @@ void draw(Object obj, Color3f color);
 void draw(vector<Object> objs, Color3f color);
 void draw(vector<Object> objs, float scale, Color3f color);
 void draw(Object obj, float scale, Color3f color);
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif

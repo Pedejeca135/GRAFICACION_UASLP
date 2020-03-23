@@ -1,5 +1,5 @@
 //#include <Object.hpp> 
-#include <Plotter.hpp>
+#include <Plotter/Plotter.hpp>
 #include <GLFW/glfw3.h>
 
 

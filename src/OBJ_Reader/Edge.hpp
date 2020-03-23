@@ -1,7 +1,7 @@
 #ifndef EDGE_H
 #define EDGE_H
 
-#include <Vertex.hpp>
+#include <OBJ_Reader/Vertex.hpp>
 
 /*
 #include <stdio.h>
