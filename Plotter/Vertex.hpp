@@ -8,6 +8,7 @@
 #include <iostream>
 #include <math.h>
 #include <sstream>
+#include <armadillo>
 
 using namespace std;
 
@@ -22,8 +23,11 @@ class Vertex {
         Vertex();
 		Vertex(float _x, float _y, float _z);		
 		Vertex(Vertex *other);
+		std::vector <float> getValues();
 		std :: string toString();
         void print();
+		arma::fcolvec getHomg();
+
 };
 
 #endif

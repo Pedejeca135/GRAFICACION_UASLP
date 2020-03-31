@@ -1,15 +1,39 @@
 //#include <Object.hpp> 
 #include <Plotter.hpp>
 #include <GLFW/glfw3.h>
+#include <armadillo>
 
 
 using namespace std;
 
 int main(void)
 {
+
+
+  /*  Vertex P1 = Vertex(3.0,4.0,5.0);
+    Vertex P2 = Vertex(6.0,7.0,8.0);
+
+    vector<float> p1 = P1.getValues();
+    arma::fmat T = {{1.0,0.0,0.0,- p1[0]},
+                    {0.0,1.0,0.0,- p1[1]},
+                    {0.0,0.0,1.0,- p1[2]},
+                    {0.0,0.0,0.0,1.0}
+};
+    
+    //cout << T << endl;
+    //cout << P1.getHomg();
+    //cout << P2.getHomg();}
+
+    arma::fcolvec P1p = T*P1.getHomg();
+    arma:: fcolvec P2p = T * P2.getHomg();
+
+    cout << P1p << endl;
+    cout << P2p << endl; 
+*/
+
 	GLFWwindow* window;
-	std::vector<Object> firstFile = readObjFile("../Models/cone_cyl.obj");
-    float escalacion= 0.11;
+	std::vector<Object> firstFile = readObjFile("../Models/suzzane.obj");
+    float escalacion= 0.61;
 	
 
 	 if( !glfwInit() )
@@ -27,7 +51,7 @@ int main(void)
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear( GL_COLOR_BUFFER_BIT );
 
-		draw(firstFile,escalacion,Color3f(0.3,0.2,0.9));
+		draw(firstFile,escalacion,Color3f(0.3,0.9,0.0));
 		plotWireFrame(firstFile,escalacion,Color3f(0.8,0.5,0.7));
 		
         

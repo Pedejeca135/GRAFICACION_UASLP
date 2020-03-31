@@ -44,3 +44,13 @@ std :: string Vertex :: toString(){
 void Vertex :: print(){
      cout<<toString()<<endl;
 }
+
+vector <float> Vertex::getValues(){
+    vector<float> v = {x,y,z};
+    return (v);
+    }
+
+arma::fcolvec Vertex::getHomg(){
+    arma::fcolvec vh ={{x},{y},{z},{1.0}};
+    return (vh);
+}
