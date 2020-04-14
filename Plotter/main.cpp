@@ -32,8 +32,8 @@ int main(void)
 */
 
 	GLFWwindow* window;
-	std::vector<Object> firstFile = readObjFile("../Models/suzzane.obj");
-    float escalacion= 0.61;
+	std::vector<Object> firstFile = readObjFile("../Models/suzzane3.obj");
+    float escalacion= 0.31;
 	
 
 	 if( !glfwInit() )

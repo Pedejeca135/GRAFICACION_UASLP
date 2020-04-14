@@ -9,9 +9,9 @@ using namespace std;
 int main( int argc, char ** argv)
 {
     //curvas de hermite.
-    arma::fmat MH = {{2.0, -2.0, 1.0, 1.0},
-                     {-3.0, 3.0, -2.0, -1.0},
-                     {0.0, 0.0, 1.0, 0.0},
+    arma::fmat MH = {{-1.0, 3.0, -3.0, 1.0},
+                     {3.0, -6.0, 3.0, 0.0},
+                     {-3.0, 3.0, 0.0, 0.0},
                      {1.0, 0.0, 0.0, 0.0}
                      };
 

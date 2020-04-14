@@ -86,6 +86,67 @@ void Object::print()
 			faces[i].print();
 }
 
+
+void Object::printwithPurpose()
+{
+    cout<<"Object: " << name << endl;
+
+	for(int i = 0; i < vertices.size(); i++)
+    {
+            cout<< "Vertex " << "(" << i+1 <<")" <<"-> ";
+			vertices[i] .print();
+    }
+	for(int i = 0; i < faces.size(); i++)
+    {
+			faces[i].print();
+        for(int k = 0 ; k<faces[i].verticesIndex.size(); k++)
+        {
+            vertices[faces[i].verticesIndex[k] ].print();
+        }
+            
+        cout<<endl;
+    }
+}
+
+
+void Object::init(std::string path)
+{
+    //*this = readObjFile(path)[0];
+    //= readObjFile(path);
+    *this = readFirstObjFile(path);
+}
+
+
+std::vector< Vertex > Object:: get_faces_verts()
+{
+    vector <Vertex> res;
+    for(int i = 0; i < faces.size() ; i++)
+    {
+        for(int j = 0 ; j < 3;j++ )
+        {
+            res.push_back(vertices[faces[i].verticesIndex[j]-1]);       
+        }        
+    }
+    return res;
+}
+
+
+
+std::vector< Vertex > Object:: get_faces_verts(int x)
+{
+    vector <Vertex> res;
+    for(int i = 0; i < faces.size() ; i++)
+    {
+        for(int j = 0 ; j < faces[i].verticesIndex.size();j++ )
+        {
+            res.push_back(vertices[faces[i].verticesIndex[j]-1]);       
+        }        
+    }
+    return res;
+}
+
+
+
 /**************************************************************************************
  * 
  * Function to read .obj files.
@@ -187,7 +248,7 @@ std::vector<Object> readObjFile(std::string path){
                                      index_V = stoi(elementsOfLine[i]);                               
                                 }
 
-                                f.Add(index_V -1 );                                
+                                f.Add(index_V);                                
                                  
                                 if(i == elementsOfLine.size() -1)
                                 {
@@ -262,3 +323,15 @@ std::vector<std::string> split(std::string str, std::string delimeter, int start
 	return res;
 }
  
+
+ /**************************************************************************************
+ * 
+ * Function to read .obj files.
+ * This need the path of the file to return an object of the Object calss.
+ * 
+ * ************************************************************************************/
+Object readFirstObjFile(std::string path)
+{
+
+   return readObjFile(path)[0];
+}//readObjFile function(END).
